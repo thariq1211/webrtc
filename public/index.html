@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebRTC Simple Video-Chat</title>
+  </head>
+  <body>
+    <video id="remoteVideo" autoplay></video>
+    <video id="localVideo" autoplay muted></video>
+    <input id="videoCallButton" type="button" disabled value="Video Call" />
+    <input id="endCallButton" type="button" disabled value="End Call" />
+    <script>
+      window.addEventListener("load", pageReady);
+      function pageReady() {
+        // check browser WebRTC availability
+        if (navigator.mediaDevices) {
+          videoCallButton = document.getElementById("videoCallButton");
+          endCallButton = document.getElementById("endCallButton");
+          localVideo = document.getElementById("localVideo");
+          remoteVideo = document.getElementById("remoteVideo");
+          videoCallButton.removeAttribute("disabled");
+          videoCallButton.addEventListener("click", initiateCall);
+          endCallButton.addEventListener("click", function (evt) {
+            wsc.send(JSON.stringify({ closeConnection: true }));
+          });
+        } else {
+          alert("Sorry, your browser does not support WebRTC!");
+        }
+      }
+    </script>
+  </body>
+</html>

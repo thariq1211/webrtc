@@ -1,0 +1,15 @@
+{
+  "name": "video-call-webrtc",
+  "version": "1.0.0",
+  "description": "video chat with nodejs, webrtc and socket io",
+  "main": "index.js",
+  "author": "thor",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "ws": "^7.4.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
